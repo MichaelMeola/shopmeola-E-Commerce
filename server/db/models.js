@@ -20,11 +20,11 @@ User.init(
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         phone: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.STRING,
+            allowNull: true
         }
     }, {
         sequelize: db
@@ -53,24 +53,24 @@ Product.init(
             allowNull: false
         },
         price: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
-        S: {
+        s: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
-        M: {
+        m: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
-        L: {
+        l: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
-        XL: {
+        xl: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         image: {
             type: DataTypes.STRING,
