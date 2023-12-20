@@ -13,8 +13,8 @@ const product1 = await Product.create({
 })
 
 const product2 = await Product.create({
-    name: 'Vinyl - MEOLA "IN2U"',
-    description: 'Vinyl Record Version Of The MEOLA Single "IN2U"',
+    name: `Vinyl - MEOLA "IN2U"`,
+    description: `Vinyl Record Version Of The MEOLA Single "IN2U"`,
     price: '$40.00',
     image: "../../pictures/IN2U vinyl.png"
 })
