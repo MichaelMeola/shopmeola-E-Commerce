@@ -1,4 +1,4 @@
-import { Product } from './db/models.js'
+import { Product, User } from './db/models.js'
 
 const handlerFunctions = {
 
@@ -13,22 +13,29 @@ const handlerFunctions = {
         res.send(allProducts)
       },
 
-      deleteProduct: async (req, res) => {
-        const { id } = req.params
+    addUser: async (req, res) => {
+      const {email, phone} = req.body
+      await User.create({ email, phone })
+        const allUsers = await User.findAll()
+        res.send(allUsers)
+      },
+
+    deleteProduct: async (req, res) => {
+        const { productId } = req.params
       
-        await Product.destroy({ where: { id } })
+        await Product.destroy({ where: { productId } })
       
         const allProducts = await Product.findAll()
         res.send(allProducts)
       },
 
     editProduct: async (req, res) => {
-        const { id } = req.params
+        const { productId } = req.params
         const { name, description, price, s, m, l, xl, image } = req.body
       
         await Product.update(
           { name, description, price, s, m, l, xl, image },
-          { where: { id } }
+          { where: { productId } }
         )
       
         const allProducts = await Product.findAll()
