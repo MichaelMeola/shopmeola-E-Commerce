@@ -1,8 +1,12 @@
 import React from 'react'
+import MusicNavbar from '../components/MusicNavbar'
 
 const Music = () => {
   return (
-    <h1>Music</h1>
+    <div>
+      <MusicNavbar />
+      <h1>Music</h1>
+    </div>
   )
 }
 

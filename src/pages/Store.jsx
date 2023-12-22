@@ -3,10 +3,10 @@ import StoreNavbar from '../components/StoreNavbar'
 
 const Store = () => {
   return (
-    <>
-    <StoreNavbar />
-    <h1>Store</h1>
-    </>
+    <div>
+      <StoreNavbar />
+      <h1>Store</h1>
+    </div>
   )
 }
 

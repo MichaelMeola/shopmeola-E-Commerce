@@ -1,25 +1,15 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { setIsCartOpen } from '../state/CartState'
-import { Badge, Box, IconButton } from '@mui/material'
-
+import 'bulma/css/bulma.css'
 
 const StoreNavbar = () => {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const cart = useSelector((state) => state.cart.cart)
-
   return (
-    
-    <Badge 
-    badgeContent={cart.length}
-    invisible={cart.length === 0}
-    >
-    <button onClick={() => dispatch(setIsCartOpen({}))}>
-        Cart
-    </button>
-    </Badge>
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src='../../pictures/MEOLA Sticker.png' />
+    </a>
+  </div>
+</nav>
   )
 }
 

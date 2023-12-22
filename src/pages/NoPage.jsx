@@ -1,9 +1,14 @@
 import React from 'react'
+import HomeNavbar from '../components/HomeNavbar'
 
 const NoPage = () => {
   return (
-    <h1>Error 404: Not found</h1>
+    <div>
+      <HomeNavbar />
+      <h1>404: Not found</h1>
+    </div>
   )
-}
-
-export default NoPage
+  }
+  
+  export default NoPage
+ 

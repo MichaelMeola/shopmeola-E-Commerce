@@ -15,9 +15,9 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/store' element={<Store />}/>
+          <Route path='/cart' element={<Cart />}/>
           <Route path='/music' element={<Music />}/>
           <Route path='/product' element={<Product />}/>
-          <Route path='/cart' element={<Cart />}/>
           <Route path='/signup' element={<SignUp />}/>
           <Route path='*' element={<NoPage />}/>
         </Routes>

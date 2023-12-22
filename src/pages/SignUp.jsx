@@ -1,8 +1,12 @@
 import React from 'react'
+import HomeNavbar from '../components/HomeNavbar'
 
 const SignUp = () => {
   return (
-    <h1>Sign Up</h1>
+    <div>
+      <HomeNavbar />
+      <h1>Sign Up</h1>
+    </div>
   )
 }
 
