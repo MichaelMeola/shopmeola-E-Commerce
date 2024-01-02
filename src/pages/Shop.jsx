@@ -1,13 +1,14 @@
 import React from 'react'
 import ShopNavbar from '../navbars/ShopNavbar'
+import Products from '../components/shop/Products'
 
-const Product = () => {
+const Shop = () => {
   return (
     <div>
       <ShopNavbar />
-      <h1>Product</h1>
+      <Products />
     </div>
   )
 }
 
-export default Product
+export default Shop

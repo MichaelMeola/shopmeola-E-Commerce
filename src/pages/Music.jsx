@@ -1,5 +1,5 @@
 import React from 'react'
-import MusicNavbar from '../components/MusicNavbar'
+import MusicNavbar from '../navbars/MusicNavbar'
 
 const Music = () => {
   return (

@@ -9,6 +9,15 @@ const HomeNavbar = () => {
       <img src='../../pictures/MEOLA Sticker.png' />
     </a>
   </div>
+    <a class="navbar-item" href='/music'>
+      Music
+    </a>
+    <a class="navbar-item" href='/shop'>
+      Shop
+    </a>
+    <a class="navbar-item" href='/signup'>
+      Sign Up
+    </a>
 </nav>
   )
 }

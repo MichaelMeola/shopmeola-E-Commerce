@@ -1,5 +1,5 @@
 import React from 'react'
-import HomeNavbar from '../components/HomeNavbar'
+import HomeNavbar from '../navbars/HomeNavbar'
 
 const NoPage = () => {
   return (
