@@ -21,8 +21,6 @@ const Products = () => {
     const cards = currentData.map((product) => <CardDisplay
     initialProductData={product}
     key={product.productId}
-    currentData={currentData}
-    setCurrentData={setCurrentData}
     />)
 
 
