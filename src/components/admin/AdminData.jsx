@@ -6,48 +6,74 @@ import UsersTable from './UsersTable.jsx'
 
 const AdminData = () => {
 
-    const [currentData, setCurrentData] = useState([])
+    const [productData, setProductData] = useState([])
+    const [userData, setUserData] = useState([])
 
     useEffect(() => {
         axios.get('/products')
         .then((res) => {
-            setCurrentData(res.data)
+            setProductData(res.data)
         })
         .catch((err) => {
             console.log(err);
         })
-    }, [])
 
-    useEffect(() => {
         axios.get('/users')
         .then((res) => {
-            setCurrentData(res.data)
+            setUserData(res.data)
         })
         .catch((err) => {
             console.log(err);
         })
     }, [])
 
-    const productRows = currentData.map((product) => <ProductsTable
+    const productRows = productData.map((product) => <ProductsTable
     initialProductData={product}
     key={product.productId}
     />)
 
-    const userRows = currentData.map((user) => <UsersTable
+    const userRows = userData.map((user) => <UsersTable
     initialUserData={user}
     key={user.userId}
     />)
 
 
   return (
-    <body>
-        <div>
+    <div className="container">
+        <h1>Products Table</h1>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>S</th>
+                <th>M</th>
+                <th>L</th>
+                <th>XL</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
             {productRows}
-        </div>
-        <div>
+        </tbody>
+    </table>
+
+    <h1>Users Table</h1>
+    <table className='table'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>email</th>
+                <th>phone</th>
+            </tr>
+        </thead>
+        <tbody>
             {userRows}
-        </div>
-    </body>
+        </tbody>
+    </table>
+    </div>
   )
 }
 
