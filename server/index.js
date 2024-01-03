@@ -11,13 +11,14 @@ app.use(morgan('dev'))
 
 import handlerFunctions from "./controller.js"
 
-const { getProducts, addProduct, deleteProduct, editProduct, addUser } = handlerFunctions
+const { getProducts, addProduct, deleteProduct, editProduct, addUser, getUsers } = handlerFunctions
 
 app.get('/products', getProducts)
 app.post('/product', addProduct)
 app.delete('/product/:productId', deleteProduct)
 app.put('/product/:productId', editProduct)
 app.post('/user', addUser)
+app.get('/users', getUsers)
 
 
 ViteExpress.listen(app, 6969, () => console.log(`Server running on http://localhost:6969`))

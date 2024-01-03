@@ -7,6 +7,11 @@ const handlerFunctions = {
         res.send(allProducts)
     },
 
+    getUsers: async(req, res) => {
+      const allUsers = await User.findAll()
+      res.send(allUsers)
+  },
+
     addProduct: async (req, res) => {
         await Product.create({})
         const allProducts = await Product.findAll()

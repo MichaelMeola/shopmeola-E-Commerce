@@ -4,7 +4,7 @@ const CardDisplay = ({ initialProductData }) => {
   return (
     <div className="card">
       <div className="card-image">
-        <figure className="image is-4by3">
+        <figure className="image is-128x128">
           <img src={`${initialProductData.image}`} alt="Product Image" />
         </figure>
       </div>

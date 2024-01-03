@@ -6,6 +6,7 @@ import Product from './pages/Product'
 import SignUp from './pages/SignUp'
 import Shop from './pages/Shop'
 import NoPage from './pages/NoPage'
+import Admin from './pages/Admin'
 import './App.css'
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path='/music' element={<Music />}/>
           <Route path='/product' element={<Product />}/>
           <Route path='/signup' element={<SignUp />}/>
+          <Route path='/admin' element={<Admin />}/>
           <Route path='*' element={<NoPage />}/>
         </Routes>
       </BrowserRouter>
