@@ -41,10 +41,10 @@ const AdminData = () => {
   return (
     <div className="container">
         <h1>Products Table</h1>
-    <table class='table'>
+    <table class='table is-bordered is-narrow is-hoverable is-fullwidth'>
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Product Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -61,10 +61,10 @@ const AdminData = () => {
     </table>
 
     <h1>Users Table</h1>
-    <table className='table'>
+    <table className='table is-bordered is-narrow is-hoverable is-fullwidth'>
         <thead>
             <tr>
-                <th>Id</th>
+                <th>User Id</th>
                 <th>email</th>
                 <th>phone</th>
             </tr>

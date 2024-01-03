@@ -34,6 +34,15 @@ const handlerFunctions = {
         res.send(allProducts)
       },
 
+    deleteUser: async (req, res) => {
+        const { userId } = req.params
+      
+        await User.destroy({ where: { userId } })
+      
+        const allUsers = await User.findAll()
+        res.send(allUsers)
+      },
+
     editProduct: async (req, res) => {
         const { productId } = req.params
         const { name, description, price, s, m, l, xl, image } = req.body
