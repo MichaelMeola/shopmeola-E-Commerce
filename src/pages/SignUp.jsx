@@ -1,34 +1,20 @@
 import React from 'react'
 import HomeNavbar from '../navbars/HomeNavbar'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const SignUp = () => {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
 
-  useEffect(() => {
-    axios.post('/user')
-    .then((res) => {
-      setEmail(res.data)
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+  const handleSubmit = async (e) => {
+    
+    if (email === '' && phone === '') {
+      e.preventDefault()
+      return alert('STOPPPP')
+    }
 
-    axios.post('/user')
-    .then((res) => {
-      setPhone(res.data)
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }, [])
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    console.log(email);
-    console.log(phone);
+    await axios.post('/user', { email, phone })
   }
 
   return (
@@ -39,14 +25,14 @@ const SignUp = () => {
       <div class="field">
         <label class="label has-text-white">Email</label>
           <div>
-            <input class="input" formAction="/user" formMethod="post" value={email} onChange={(e) => setEmail(e.target.value)} type='email' placeholder="youremail@gmail.com"/>
+            <input class="input" onChange={(e) => setEmail(e.target.value)} type='email' placeholder="youremail@gmail.com"/>
           </div>
       </div>
 
       <div class="field">
         <label class="label has-text-white">Phone</label>
           <div>
-            <input class="input" formAction="/user" formMethod="post" value={phone} onChange={(e) => setPhone(e.target.value)} type='phone' placeholder="123-456-7890"/>
+            <input class="input" onChange={(e) => setPhone(e.target.value)} type='text' placeholder="123-456-7890"/>
           </div>
       </div>
 
@@ -59,12 +45,9 @@ const SignUp = () => {
         </div>
       </div>
 
-      <div class="field is-grouped">
+      <div class="field is-centered">
         <div class="control">
-          <button class="button is-link" type='submit'>Submit</button>
-        </div>
-        <div class="control">
-          <button class="button is-link is-light">Cancel</button>
+          <button class="button is-success" type='submit'>Submit</button>
         </div>
       </div>
       </form>

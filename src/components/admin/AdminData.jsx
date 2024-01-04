@@ -65,8 +65,8 @@ const AdminData = () => {
         <thead>
             <tr>
                 <th>User Id</th>
-                <th>email</th>
-                <th>phone</th>
+                <th>Email</th>
+                <th>Phone</th>
             </tr>
         </thead>
         <tbody>
