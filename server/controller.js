@@ -19,7 +19,7 @@ const handlerFunctions = {
       },
 
     addUser: async (req, res) => {
-      const {email, phone} = req.body
+      const { email, phone } = req.body
       await User.create({ email, phone })
         const allUsers = await User.findAll()
         res.send(allUsers)
