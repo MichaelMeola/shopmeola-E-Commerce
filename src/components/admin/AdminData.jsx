@@ -27,15 +27,63 @@ const AdminData = () => {
         })
     }, [])
 
+
+
+    const addProduct = async () => {
+      
+        await axios.post('/product', {})
+          .then((res) => {
+            console.log(res.data)
+            setProductData(res.data)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+
+      const deleteProduct = async (productId) => {
+    
+        await axios.delete(`/product/${productId}`)
+          .then((res) => {
+            console.log(res.data)
+            setProductData(res.data)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+      
     const productRows = productData.map((product) => <ProductsTable
     initialProductData={product}
+    initialEditMode={false}
     key={product.productId}
+    deleteProduct={() => deleteProduct(product.productId)}
+    productData={productData}
+    setProductData={setProductData}
     />)
+
+
+
+    const deleteUser = async (userId) => {
+    
+        await axios.delete(`/user/${userId}`)
+          .then((res) => {
+            console.log(res.data)
+            setUserData(res.data)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
 
     const userRows = userData.map((user) => <UsersTable
     initialUserData={user}
     key={user.userId}
+    deleteUser={() => deleteUser(user.userId)}
+    userData={userData}
+    setUserData={setUserData}
     />)
+
 
 
   return (
@@ -44,6 +92,7 @@ const AdminData = () => {
     <table class='table is-bordered is-narrow is-hoverable is-fullwidth'>
         <thead>
             <tr>
+                <th></th>
                 <th>Product Id</th>
                 <th>Name</th>
                 <th>Description</th>
@@ -58,12 +107,16 @@ const AdminData = () => {
         <tbody>
             {productRows}
         </tbody>
+        <tfoot>
+            <button onClick={addProduct} class="button is-success">Add Product</button>
+        </tfoot>
     </table>
 
     <h1>Users Table</h1>
     <table className='table is-bordered is-narrow is-hoverable is-fullwidth'>
         <thead>
             <tr>
+                <th></th>
                 <th>User Id</th>
                 <th>Email</th>
                 <th>Phone</th>
