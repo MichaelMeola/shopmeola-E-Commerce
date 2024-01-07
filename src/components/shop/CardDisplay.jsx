@@ -1,6 +1,10 @@
-import React from 'react';
+import React from "react";
+import { useCart, useCartProducts } from "../../state/cart.jsx";
 
 const CardDisplay = ({ initialProductData }) => {
+  const { products, addProduct } = useCartProducts()
+  console.log('p', products)
+
   return (
     <div className="card">
       <div className="card-image">
@@ -13,7 +17,9 @@ const CardDisplay = ({ initialProductData }) => {
         <div className="media">
           <div className="media-content">
             <p className="title is-4">{initialProductData.name}</p>
-            <p className="subtitle is-6 has-text-weight-semibold">{initialProductData.price}</p>
+            <p className="subtitle is-6 has-text-weight-semibold">
+              {initialProductData.price}
+            </p>
           </div>
         </div>
 
@@ -23,8 +29,17 @@ const CardDisplay = ({ initialProductData }) => {
       </div>
 
       <div className="card-footer">
-        <a href="#" className="card-footer-item has-text-primary">Add to Cart</a>
-        <a href="#" className="card-footer-item has-text-grey">View Details</a>
+        <button
+          onClick={() => {
+            addProduct(initialProductData)
+          }}
+          className="card-footer-item has-text-primary"
+        >
+          Add to Cart
+        </button>
+        <a href="#" className="card-footer-item has-text-grey">
+          View Details
+        </a>
       </div>
     </div>
   );

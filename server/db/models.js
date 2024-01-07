@@ -80,7 +80,7 @@ Product.init(
             defaultValue: null
         },
         image: {
-            type: DataTypes.STRING,
+            type: DataTypes.BLOB,
             allowNull: false,
             defaultValue: ''
         }

@@ -7,12 +7,14 @@ import SignUp from './pages/SignUp'
 import Shop from './pages/Shop'
 import NoPage from './pages/NoPage'
 import Admin from './pages/Admin'
+import Navbar from './navbars/Navbar'
 import './App.css'
 
 export default function App() {
   return (
     <div>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/home' element={<Home />}/>

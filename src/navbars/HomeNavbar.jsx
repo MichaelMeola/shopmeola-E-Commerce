@@ -1,5 +1,6 @@
 import React from 'react'
 import 'bulma/css/bulma.css'
+import { Link } from 'react-router-dom'
 
 const HomeNavbar = () => {
   return (
@@ -9,9 +10,9 @@ const HomeNavbar = () => {
       <img src='../../pictures/MEOLA Sticker.png' />
     </a>
   </div>
-    <a class="navbar-item" href='/music'>
+    <Link class="navbar-item" to='/music'>
       Music
-    </a>
+    </Link>
     <a class="navbar-item" href='/shop'>
       Shop
     </a>
