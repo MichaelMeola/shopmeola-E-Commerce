@@ -1,9 +1,9 @@
 import React from "react";
-import { useCart, useCartProducts } from "../../state/cart.jsx";
+import { useCartProducts } from "../../state/CartState.jsx";
 
 const CardDisplay = ({ initialProductData }) => {
-  const { products, addProduct } = useCartProducts()
-  console.log('p', products)
+  const { cart, addProduct } = useCartProducts()
+  console.log('cd', cart)
 
   return (
     <div className="card">

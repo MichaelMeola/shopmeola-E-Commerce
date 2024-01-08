@@ -1,11 +1,11 @@
 import React from "react";
 import "bulma/css/bulma.css";
-import { useCartProducts } from "../state/cart.jsx";
+import { useCartProducts } from "../state/CartState.jsx";
 import { Link } from  'react-router-dom'
 
 const ShopNavbar = () => {
 
-  const { products } = useCartProducts()
+  const { cart } = useCartProducts()
   
   return (
     <nav
@@ -26,14 +26,11 @@ const ShopNavbar = () => {
           <a class="navbar-item">Vinyls</a>
         </div>
       </div>
-      <a class="navbar-item" href="/music">
-        Music
-      </a>
       <Link class="navbar-item" to="/signup">
         Sign Up
       </Link>
       <Link class="navbar-item" to="/cart">
-        Cart - {products.length}
+        Cart - {cart.length}
       </Link>
     </nav>
   );

@@ -10,15 +10,12 @@ const HomeNavbar = () => {
       <img src='../../pictures/MEOLA Sticker.png' />
     </a>
   </div>
-    <Link class="navbar-item" to='/music'>
-      Music
-    </Link>
-    <a class="navbar-item" href='/shop'>
+    <Link class="navbar-item" to='/shop'>
       Shop
-    </a>
-    <a class="navbar-item" href='/signup'>
+    </Link>
+    <Link class="navbar-item" to='/signup'>
       Sign Up
-    </a>
+    </Link>
 </nav>
   )
 }

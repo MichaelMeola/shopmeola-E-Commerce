@@ -1,58 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
-const initialState = {
-    isCartOpen: false,
-    cart: [],
-    products: []
-}
+// export const useCart = create((set) => ({
+//   count: 1,
+//   inc: () => set((state) => ({ count: state.count + 1 })),
+// }));
 
-export const cartSlice = createSlice({
-    name: 'cart',
-    initialState,
-    reducers: {
-        setproducts: (state, action) => {
-            state.products = action.payload
-        },
+export const useCartProducts = create(
+  persist(
+    (set) => ({
+      cart: [],
 
-        addToCart: (state, action) => {
-            state.cart = [ ...state.cart, action.payload.product ]
-        },
+      addProduct: (product) =>
+        set((state) => ({ cart: [...state.cart, product] })),
 
-        removeFromCart: (state, action) => {
-            state.cart = state.cart.filter((product) => product.id !== action.payload.id)
-        },
+      removeProduct: (productId) =>
+        set((state) => ({
+          cart: state.cart.filter((el) => el.id !== productId),
+        })),
 
-        increaseCount: (state, action) => {
-            state.cart = state.cart.map((product) => {
-                if(product.id === action.payload.id) {
-                    product.count++
-                }
-                return product
-            })
-        },
+      clearCart: () => set((state) => ({ cart: [] }))
 
-        decreaseCount: (state, action) => {
-            state.cart = state.cart.map((product) => {
-                if(product.id === action.payload.id && product.count > 1) {
-                    product.count--
-                }
-                return product
-            })
-        },
+    }),
 
-        setIsCartOpen: (state) => {
-            state.isCartOpen = !state.isCartOpen
-        }
-    }
-})
+    { name: "cart" }
+  )
+);
 
-export const {
-    setproducts,
-    addToCart,
-    removeFromCart,
-    increaseCount,
-    decreaseCount,
-    setIsCartOpen
-} = cartSlice.actions
-
-export default cartSlice.reducer
+export const useCartSidebarOpen = create((set) => ({
+  isOpen: false,
+  open: () => set((state) => ({ isOpen: true })),
+  close: () => set((state) => ({ isOpen: false })),
+}));

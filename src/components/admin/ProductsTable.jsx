@@ -28,7 +28,7 @@ const ProductsTable = ({
   return isEditing ? (
     <tr key={initialProductData.productId}>
       <td>
-        <button onClick={changeNormalMode}>Save</button>
+        <button onClick={changeNormalMode} class="button is-success is-outlined">Save</button>
       </td>
       <th>{initialProductData.productId}</th>
       <td>
@@ -75,7 +75,7 @@ const ProductsTable = ({
         <button onClick={deleteProduct} class="button is-danger">
           Delete
         </button>
-        <button onClick={changeEditMode}>Edit</button>
+        <button onClick={changeEditMode} class="button is-info">Edit</button>
       </td>
       <th>{initialProductData.productId}</th>
       <td>{initialProductData.name}</td>
