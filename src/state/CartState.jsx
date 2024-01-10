@@ -1,16 +1,37 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
+// HELPER FUNCTIONS
+const calculateCartQuantity = (cart) => {
+  let total = 0;
 
-function calculateCartQuantity(cart) {
-  return cart.reduce((total, item) => total + item.quantity, 0);
-}
+  for (let i = 0; i < cart.length; i++) {
+    const item = cart[i];
+    total += item.quantity;
+  }
 
+  return total;
+};
+
+const calculateCartTotalPrice = (cart) => {
+  let totalPrice = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    const item = cart[i];
+    const price = +item.price.slice(1);
+    totalPrice += price * item.quantity;
+  }
+
+  return "$" + totalPrice.toFixed(2);
+};
+
+// GLOBAL STATE
 export const useCartProducts = create(
   persist(
     (set) => ({
       cart: [],
       cartQuantity: 0,
+      cartTotalPrice: "$0.00",
 
       changeQuantity: (event, productId) => {
         const newQuantity = +event.target.value;
@@ -25,6 +46,7 @@ export const useCartProducts = create(
               ...state,
               cart: updatedCart,
               cartQuantity: calculateCartQuantity(updatedCart),
+              cartTotalPrice: calculateCartTotalPrice(updatedCart),
             };
           });
         }
@@ -47,6 +69,7 @@ export const useCartProducts = create(
             ...state,
             cart: updatedCart,
             cartQuantity: calculateCartQuantity(updatedCart),
+            cartTotalPrice: calculateCartTotalPrice(updatedCart),
           };
         }),
 
@@ -59,10 +82,12 @@ export const useCartProducts = create(
             ...state,
             cart: updatedCart,
             cartQuantity: calculateCartQuantity(updatedCart),
+            cartTotalPrice: calculateCartTotalPrice(updatedCart),
           };
         }),
 
-      clearCart: () => set({ cart: [], cartQuantity: 0 }),
+      clearCart: () =>
+        set({ cart: [], cartQuantity: 0, cartTotalPrice: "$0.00" }),
     }),
 
     { name: "cart" }

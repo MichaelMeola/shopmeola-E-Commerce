@@ -6,9 +6,9 @@ const HomeNavbar = () => {
   return (
 <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
-    <a className="navbar-item" href="/">
+    <Link className="navbar-item" to="/">
       <img src='../../pictures/MEOLA Sticker.png' />
-    </a>
+    </Link>
   </div>
     <Link className="navbar-item" to='/shop'>
       Shop
