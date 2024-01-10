@@ -89,7 +89,7 @@ const AdminData = () => {
   return (
     <div className="container">
         <h1>Products Table</h1>
-    <table class='table is-bordered is-narrow is-hoverable is-fullwidth'>
+    <table className='table is-bordered is-narrow is-hoverable is-fullwidth'>
         <thead>
             <tr>
                 <th></th>
@@ -108,7 +108,7 @@ const AdminData = () => {
             {productRows}
         </tbody>
         <tfoot>
-            <button onClick={addProduct} class="button is-success">Add Product</button>
+            <button onClick={addProduct} className="button is-success">Add Product</button>
         </tfoot>
     </table>
 

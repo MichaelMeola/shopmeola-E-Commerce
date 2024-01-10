@@ -16,27 +16,27 @@ const ShopNavbar = () => {
 
   return (
     <nav
-      class="navbar is-fixed-top"
+      className="navbar is-fixed-top"
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+      <div className="navbar-brand">
+        <a className="navbar-item" href="/">
           <img src="../../pictures/MEOLA Sticker.png" />
         </a>
       </div>
-      <div class="navbar-item has-dropdow is-hoverable">
-        <a class="navbar-link">Shop</a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item">Clothing</a>
-          <a class="navbar-item">Accessories</a>
-          <a class="navbar-item">Vinyls</a>
+      <div className="navbar-item has-dropdow is-hoverable">
+        <a className="navbar-link">Shop</a>
+        <div className="navbar-dropdown">
+          <a className="navbar-item">Clothing</a>
+          <a className="navbar-item">Accessories</a>
+          <a className="navbar-item">Vinyls</a>
         </div>
       </div>
-      <Link class="navbar-item" to="/signup">
+      <Link className="navbar-item" to="/signup">
         Sign Up
       </Link>
-      <Link class="navbar-item" to="/cart">
+      <Link className="navbar-item" to="/cart">
         Cart - {cartQuantity}
       </Link>
     </nav>

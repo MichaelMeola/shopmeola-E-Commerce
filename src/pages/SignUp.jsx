@@ -26,37 +26,37 @@ const SignUp = () => {
       <HomeNavbar />
 
       <form onSubmit={handleSubmit}>
-      <div class="field">
-        <label class="label has-text-white">Email</label>
+      <div className="field">
+        <label className="label has-text-white">Email</label>
           <div>
-            <input class="input" onChange={(e) => setEmail(e.target.value)} onFocus={() => setError(false)} type='email' placeholder="youremail@gmail.com"/>
+            <input className="input" onChange={(e) => setEmail(e.target.value)} onFocus={() => setError(false)} type='email' placeholder="youremail@gmail.com"/>
           </div>
       </div>
 
-      <div class="field">
-        <label class="label has-text-white">Phone</label>
+      <div className="field">
+        <label className="label has-text-white">Phone</label>
           <div>
-            <input class="input" onChange={(e) => setPhone(e.target.value)} onFocus={() => setError(false)} type='text' placeholder="123-456-7890"/>
+            <input className="input" onChange={(e) => setPhone(e.target.value)} onFocus={() => setError(false)} type='text' placeholder="123-456-7890"/>
           </div>
       </div>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox has-text-white">
+      <div className="field">
+        <div className="control">
+          <label className="checkbox has-text-white">
           <input type="checkbox" required/>
             Subscibe to updates from MEOLA
           </label>
         </div>
       </div>
 
-      <div class="field is-centered">
-        <div class="control">
-          <button class="button is-success" type='submit'>Submit</button>
+      <div className="field is-centered">
+        <div className="control">
+          <button className="button is-success" type='submit'>Submit</button>
         </div>
       </div>
 
-      <div class="field is-centered">
-        <div class="control">
+      <div className="field is-centered">
+        <div className="control">
           <h2>{error ? "Both fields cannot be empty" : ""}</h2>
         </div>
       </div>

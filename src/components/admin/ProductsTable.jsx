@@ -28,12 +28,12 @@ const ProductsTable = ({
   return isEditing ? (
     <tr key={initialProductData.productId}>
       <td>
-        <button onClick={changeNormalMode} class="button is-success is-outlined">Save</button>
+        <button onClick={changeNormalMode} className="button is-success is-outlined">Save</button>
       </td>
       <th>{initialProductData.productId}</th>
       <td>
         <input
-          class="input"
+          className="input"
           type="text"
           placeholder="Name"
           value={initialProductData.name}
@@ -41,29 +41,29 @@ const ProductsTable = ({
         />
       </td>
       <td>
-        <input class="input" type="text" placeholder="Description" />
+        <input className="input" type="text" placeholder="Description" />
       </td>
       <td>
-        <input class="input" type="text" placeholder="$0.00" />
+        <input className="input" type="text" placeholder="$0.00" />
       </td>
       <td>
-        <input class="input" type="number" placeholder="0" />
+        <input className="input" type="number" placeholder="0" />
       </td>
       <td>
-        <input class="input" type="number" placeholder="0" />
+        <input className="input" type="number" placeholder="0" />
       </td>
       <td>
-        <input class="input" type="number" placeholder="0" />
+        <input className="input" type="number" placeholder="0" />
       </td>
       <td>
-        <input class="input" type="number" placeholder="0" />
+        <input className="input" type="number" placeholder="0" />
       </td>
       <td>
-        <div class="file">
-          <label class="file-label">
-            <input class="file-input" type="file" name="resume" />
-            <span class="file-cta">
-              <span class="file-label">Choose a file…</span>
+        <div className="file">
+          <label className="file-label">
+            <input className="file-input" type="file" name="resume" />
+            <span className="file-cta">
+              <span className="file-label">Choose a file…</span>
             </span>
           </label>
         </div>
@@ -72,10 +72,10 @@ const ProductsTable = ({
   ) : (
     <tr key={initialProductData.productId}>
       <td>
-        <button onClick={deleteProduct} class="button is-danger">
+        <button onClick={deleteProduct} className="button is-danger">
           Delete
         </button>
-        <button onClick={changeEditMode} class="button is-info">Edit</button>
+        <button onClick={changeEditMode} className="button is-info">Edit</button>
       </td>
       <th>{initialProductData.productId}</th>
       <td>{initialProductData.name}</td>

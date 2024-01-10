@@ -5,6 +5,7 @@ const CardDisplay = ({ initialProductData }) => {
   const { cart, addProduct } = useCartProducts()
 
   return (
+    <>
     <div className="card">
       <div className="card-image">
         <figure className="image is-128x128">
@@ -33,14 +34,12 @@ const CardDisplay = ({ initialProductData }) => {
             addProduct(initialProductData)
           }}
           className="card-footer-item has-text-primary"
-        >
+          >
           Add to Cart
         </button>
-        <a href="#" className="card-footer-item has-text-grey">
-          View Details
-        </a>
       </div>
     </div>
+    </>
   );
 };
 

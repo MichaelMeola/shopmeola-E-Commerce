@@ -2,30 +2,37 @@ import React from "react";
 import { useCartProducts } from "../../state/CartState.jsx";
 
 const CartDisplay = ({ product }) => {
-  const { removeProduct } = useCartProducts();
+  const { removeProduct, changeQuantity } = useCartProducts();
 
-  console.log(product);
-
-  return (  
-    <div class="list has-visible-pointer-controls">
-      <div class="list-item">
-        <div class="list-item-image">
-          <figure class="image is-96x96">
-            <img src={`${product.image}`} alt="Product Image"/>
+  return (
+    <div className="list has-visible-pointer-controls">
+      <div className="list-item">
+        <div className="list-item-image">
+          <figure className="image is-96x96">
+            <img src={`${product.image}`} alt="Product Image" />
           </figure>
         </div>
 
-        <div class="list-item-content">
-          <div class="is-flex is-align-items-center">
-            <span>{product.price}</span>
-          </div>
+        <div className="list-item-content">
+          <div className="list-item-title">{product.name}</div>
         </div>
-        
-        <div class="list-item-controls">
 
-          <div class="list-item-price">{product.price}</div>
-          <div class="list-item-quantity">Quantity : {product.quantity}</div>
-          <button onClick={() => {removeProduct(product.productId)}}>Remove Item</button>
+        <div className="list-item-controls">
+          <div className="is-flex is-align-items-center">
+            <span>{product.price}</span>
+
+            <div className="control ml-3">
+              <input className="input" type="number" value={product.quantity} onChange={(event) => changeQuantity(event, product.productId)}/>
+            </div>
+          </div>
+
+          <button className="button is-danger"
+            onClick={() => {
+              removeProduct(product.productId);
+            }}
+          >
+            Remove Item
+          </button>
         </div>
       </div>
     </div>
