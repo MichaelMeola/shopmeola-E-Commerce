@@ -5,7 +5,7 @@ import util from 'util'
 
 const db = await connectToDB('postgres:///shopmeola')
 
-className User extends Model {
+class User extends Model {
     [util.inspect.custom]() {
         return this.toJSON()
     }
@@ -31,7 +31,7 @@ User.init(
     }
 )
 
-className Product extends Model {
+class Product extends Model {
     [util.inspect.custom]() {
         return this.toJSON()
     }

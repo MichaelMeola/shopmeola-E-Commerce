@@ -19,7 +19,7 @@ const Cart = () => {
         <h1 className="title is-4 mb-2">Your Shopping Cart</h1>
         {cart.length === 0 ? (
           <>
-            <p>Your cart is currently empty :(</p>
+            <p>Your cart is empty :(</p>
             <Link className="button is-black is-medium" to="/shop">
               Shop
             </Link>
