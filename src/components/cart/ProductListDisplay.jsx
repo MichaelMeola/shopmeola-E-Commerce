@@ -1,7 +1,7 @@
 import React from "react";
 import { useCartProducts } from "../../state/CartState.jsx";
 
-const CartDisplay = ({ product }) => {
+const ProductListDisplay = ({ product }) => {
   const { removeProduct, changeQuantity } = useCartProducts();
 
   return (
@@ -39,4 +39,4 @@ const CartDisplay = ({ product }) => {
   );
 };
 
-export default CartDisplay;
+export default ProductListDisplay;

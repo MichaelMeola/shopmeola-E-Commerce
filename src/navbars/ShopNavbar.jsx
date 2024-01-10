@@ -5,14 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const ShopNavbar = () => {
-  const { cart } = useCartProducts();
-
-  let cartQuantity = 0;
-
-  for (let i = 0; i < cart.length; i++) {
-    const item = cart[i];
-    cartQuantity += item.quantity;
-  }
+  const { cart, cartQuantity } = useCartProducts();
 
   return (
     <nav
@@ -25,14 +18,14 @@ const ShopNavbar = () => {
           <img src="../../pictures/MEOLA Sticker.png" />
         </a>
       </div>
-      <div className="navbar-item has-dropdow is-hoverable">
+      <Link className="navbar-item has-dropdow is-hoverable" to="/shop">
         <a className="navbar-link">Shop</a>
         <div className="navbar-dropdown">
           <a className="navbar-item">Clothing</a>
           <a className="navbar-item">Accessories</a>
           <a className="navbar-item">Vinyls</a>
         </div>
-      </div>
+      </Link>
       <Link className="navbar-item" to="/signup">
         Sign Up
       </Link>
