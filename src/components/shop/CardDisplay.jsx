@@ -3,7 +3,6 @@ import { useCartProducts } from "../../state/CartState.jsx";
 
 const CardDisplay = ({ initialProductData }) => {
   const { cart, addProduct } = useCartProducts()
-  console.log('cd', cart)
 
   return (
     <div className="card">

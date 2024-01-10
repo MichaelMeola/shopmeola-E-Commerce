@@ -1,12 +1,19 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import { useCartProducts } from "../state/CartState.jsx";
-import { Link } from  'react-router-dom'
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const ShopNavbar = () => {
+  const { cart } = useCartProducts();
 
-  const { cart } = useCartProducts()
-  
+  let cartQuantity = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    const item = cart[i];
+    cartQuantity += item.quantity;
+  }
+
   return (
     <nav
       class="navbar is-fixed-top"
@@ -30,7 +37,7 @@ const ShopNavbar = () => {
         Sign Up
       </Link>
       <Link class="navbar-item" to="/cart">
-        Cart - {cart.length}
+        Cart - {cartQuantity}
       </Link>
     </nav>
   );
