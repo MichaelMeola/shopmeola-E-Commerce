@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useCartProducts } from "../../state/ZustandState.jsx";
+import Checkout from "../../pages/Checkout.jsx";
 
 const OrderSummary = () => {
-    const { cartQuantity, cartTotalPrice } = useCartProducts();
+  const { cart, cartQuantity, cartTotalPrice } = useCartProducts();
+  const [order, setOrder] = useState([]);
 
-    const quantityText = cartQuantity === 1 ? "item" : "items"
+  const quantityText = cartQuantity === 1 ? "item" : "items";
+
+  const handleCheckout = () => {
+    setOrder(cart);
+  };
 
   return (
     <div className="box" id="order">
@@ -12,11 +19,15 @@ const OrderSummary = () => {
       <div className="list">
         <div className="list-item">
           <div className="list-item-content">
-            <div className="list-item-title">{cartQuantity} {quantityText} : {cartTotalPrice}</div>
+            <div className="list-item-title">
+              {cartQuantity} {quantityText} : {cartTotalPrice}
+            </div>
           </div>
         </div>
       </div>
-      <button>Checkout</button>
+      <Link to="/checkout">
+        <button onClick={handleCheckout}>Checkout</button>
+      </Link>
     </div>
   );
 };

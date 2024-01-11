@@ -4,8 +4,6 @@ import { useCartProducts } from "../../state/ZustandState.jsx";
 const ProductListDisplay = ({ product }) => {
   const { removeProduct, changeQuantity } = useCartProducts();
 
-  console.log(product);
-
   return (
     <div className="list has-visible-pointer-controls">
       <div className="list-item">
@@ -27,19 +25,32 @@ const ProductListDisplay = ({ product }) => {
             <span>{product.price}</span>
 
             <div className="control ml-3">
-              <input
-                className="input"
-                type="number"
-                value={product.quantity}
-                onChange={(event) => changeQuantity(event, product.productId)}
-              />
+              <div className="select">
+                <select
+                  value={product.quantity}
+                  onChange={(event) =>
+                    changeQuantity(event, product.productId, product.size)
+                  }
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
             </div>
           </div>
 
           <button
             className="button is-danger"
             onClick={() => {
-              removeProduct(product.productId);
+              removeProduct(product.productId, product.size);
             }}
           >
             Remove Item

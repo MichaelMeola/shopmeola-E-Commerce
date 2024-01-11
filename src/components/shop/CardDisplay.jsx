@@ -36,20 +36,17 @@ const CardDisplay = ({ product }) => {
 
           <div className="content">
             {product.s !== null && (
-              <button
-                className={`button is-black is-outlined ${
-                  selectedSize === "S" ? "is-active" : ""
-                }`}
-                onClick={() => handleSizeSelection("S")}
-              >
-                S
-              </button>
+              <>
+                <h>Select Your Size</h>
+                <button className='button is-black is-outlined'
+                  onClick={() => handleSizeSelection("S")}
+                >
+                  S
+                </button>
+              </>
             )}
             {product.m !== null && (
-              <button
-                className={`button is-black is-outlined ${
-                  selectedSize === "M" ? "is-active" : ""
-                }`}
+              <button className='button is-black is-outlined'
                 onClick={() => handleSizeSelection("M")}
               >
                 M
@@ -57,9 +54,7 @@ const CardDisplay = ({ product }) => {
             )}
             {product.l !== null && (
               <button
-                className={`button is-black is-outlined ${
-                  selectedSize === "L" ? "is-active" : ""
-                }`}
+                className='button is-black is-outlined'
                 onClick={() => handleSizeSelection("L")}
               >
                 L
@@ -67,9 +62,7 @@ const CardDisplay = ({ product }) => {
             )}
             {product.xl !== null && (
               <button
-                className={`button is-black is-outlined ${
-                  selectedSize === "XL" ? "is-active" : ""
-                }`}
+                className='button is-black is-outlined'
                 onClick={() => handleSizeSelection("XL")}
               >
                 XL
@@ -84,10 +77,7 @@ const CardDisplay = ({ product }) => {
               }}
               className="card-footer-item button is-success"
             >
-              Quick Add To Cart
-            </button>
-            <button className="card-footer-item button is-focused">
-              View Details
+              Add To Cart
             </button>
           </div>
         </div>

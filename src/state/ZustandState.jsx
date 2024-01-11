@@ -33,12 +33,12 @@ export const useCartProducts = create(
       cartQuantity: 0,
       cartTotalPrice: "$0.00",
 
-      changeQuantity: (event, productId) => {
+      changeQuantity: (event, productId, size) => {
         const newQuantity = +event.target.value;
         if (newQuantity >= 1) {
           set((state) => {
             const updatedCart = state.cart.map((item) =>
-              item.productId === productId
+              item.productId === productId && item.size === size
                 ? { ...item, quantity: newQuantity }
                 : item
             );
@@ -55,11 +55,18 @@ export const useCartProducts = create(
       addProduct: (product) =>
         set((state) => {
           const existingItem = state.cart.find(
-            (item) => item.productId === product.productId
+            (item) =>
+              item.productId === product.productId && item.size === product.size
           );
+
+          if (existingItem && existingItem.quantity >= 10) {
+            return state;
+          }
+
           const updatedCart = existingItem
             ? state.cart.map((item) =>
-                item.productId === product.productId
+                item.productId === product.productId &&
+                item.size === product.size
                   ? { ...item, quantity: item.quantity + 1 }
                   : item
               )
@@ -73,10 +80,10 @@ export const useCartProducts = create(
           };
         }),
 
-      removeProduct: (productId) =>
+      removeProduct: (productId, size) =>
         set((state) => {
           const updatedCart = state.cart.filter(
-            (el) => el.productId !== productId
+            (el) => el.productId !== productId || el.size !== size
           );
           return {
             ...state,
@@ -94,14 +101,13 @@ export const useCartProducts = create(
   )
 );
 
-
 export const useProductStore = create(
   persist(
     (set) => ({
       products: [],
       setProducts: (data) => set({ products: data }),
     }),
-    
-    {name: 'products'}
+
+    { name: "products" }
   )
 );

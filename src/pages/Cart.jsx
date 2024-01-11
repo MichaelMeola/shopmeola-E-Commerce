@@ -14,7 +14,7 @@ const Cart = () => {
   ));
 
   return (
-    <body>
+    <>
       <ShopNavbar />
       <div className="box" id="cart">
         {cart.length === 0 ? (
@@ -37,7 +37,7 @@ const Cart = () => {
           </>
         )}
       </div>
-    </body>
+    </>
   );
 };
 
