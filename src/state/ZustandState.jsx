@@ -93,3 +93,15 @@ export const useCartProducts = create(
     { name: "cart" }
   )
 );
+
+
+export const useProductStore = create(
+  persist(
+    (set) => ({
+      products: [],
+      setProducts: (data) => set({ products: data }),
+    }),
+    
+    {name: 'products'}
+  )
+);

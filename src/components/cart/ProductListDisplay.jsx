@@ -1,8 +1,10 @@
 import React from "react";
-import { useCartProducts } from "../../state/CartState.jsx";
+import { useCartProducts } from "../../state/ZustandState.jsx";
 
 const ProductListDisplay = ({ product }) => {
   const { removeProduct, changeQuantity } = useCartProducts();
+
+  console.log(product);
 
   return (
     <div className="list has-visible-pointer-controls">
@@ -15,6 +17,9 @@ const ProductListDisplay = ({ product }) => {
 
         <div className="list-item-content">
           <div className="list-item-title">{product.name}</div>
+          <div className="list-item-title">
+            {product.size !== null && <>Size: {product.size}</>}
+          </div>
         </div>
 
         <div className="list-item-controls">
@@ -22,11 +27,17 @@ const ProductListDisplay = ({ product }) => {
             <span>{product.price}</span>
 
             <div className="control ml-3">
-              <input className="input" type="number" value={product.quantity} onChange={(event) => changeQuantity(event, product.productId)}/>
+              <input
+                className="input"
+                type="number"
+                value={product.quantity}
+                onChange={(event) => changeQuantity(event, product.productId)}
+              />
             </div>
           </div>
 
-          <button className="button is-danger"
+          <button
+            className="button is-danger"
             onClick={() => {
               removeProduct(product.productId);
             }}

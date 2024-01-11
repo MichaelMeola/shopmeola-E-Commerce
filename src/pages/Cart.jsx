@@ -3,7 +3,7 @@ import ShopNavbar from "../navbars/ShopNavbar.jsx";
 import ProductListDisplay from "../components/cart/ProductListDisplay.jsx";
 import OrderSummary from "../components/cart/OrderSummary.jsx";
 import { Link } from "react-router-dom";
-import { useCartProducts } from "../state/CartState.jsx";
+import { useCartProducts } from "../state/ZustandState.jsx";
 
 const Cart = () => {
   const { cart, removeProduct, clearCart } = useCartProducts();

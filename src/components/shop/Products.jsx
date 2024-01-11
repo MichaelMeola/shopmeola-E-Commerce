@@ -1,27 +1,28 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import CardDisplay from "./CardDisplay.jsx";
+import React, { useEffect } from 'react';
+import { useProductStore } from "../../state/ZustandState.jsx";
+import axios from 'axios';
+import CardDisplay from './CardDisplay';
 
 const Products = () => {
-  const [currentData, setCurrentData] = useState([]);
+  const { products, setProducts } = useProductStore();
 
   useEffect(() => {
     axios
-      .get("/products")
+      .get('/products')
       .then((res) => {
-        setCurrentData(res.data);
+        setProducts(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [setProducts]);
 
-  const cards = currentData.map((product) => (
-    <CardDisplay initialProductData={product} key={product.productId} />
+  const cards = products.map((product) => (
+    <CardDisplay product={product} key={product.productId} />
   ));
 
-  return <body>{cards}</body>;
+
+  return <div>{cards}</div>;
 };
 
 export default Products;

@@ -1,5 +1,5 @@
 import React from "react";
-import { useCartProducts } from "../../state/CartState.jsx";
+import { useCartProducts } from "../../state/ZustandState.jsx";
 
 const OrderSummary = () => {
     const { cartQuantity, cartTotalPrice } = useCartProducts();

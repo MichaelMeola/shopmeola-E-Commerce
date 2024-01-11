@@ -1,6 +1,6 @@
 import React from "react";
 import "bulma/css/bulma.css";
-import { useCartProducts } from "../state/CartState.jsx";
+import { useCartProducts } from "../state/ZustandState.jsx";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
