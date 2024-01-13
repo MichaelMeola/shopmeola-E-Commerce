@@ -63,7 +63,7 @@ export default function AddressForm() {
             name="address"
             label="Address"
             fullWidth
-            autoComplete="shipping address-line"
+            autoComplete="shipping address"
             variant="standard"
             value={address}
             onChange={(e) => setAddress(e.target.value)}

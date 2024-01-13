@@ -16,6 +16,13 @@ import {
 import AddressForm from "../components/checkout/AddressForm.jsx";
 import PaymentForm from "../components/checkout/PaymentForm.jsx";
 import Review from "../components/checkout/Review.jsx";
+import ShopNavbar from "../navbars/ShopNavbar.jsx";
+import {
+  useCartProducts,
+  useAddressFormStore,
+  usePaymentFormStore,
+  useOrderStore,
+} from "../state/ZustandState.jsx";
 
 function Copyright() {
   return (
@@ -34,9 +41,46 @@ const steps = ["Shipping address", "Payment details", "Review your order"];
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = useState(0);
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const { cart, clearCart } = useCartProducts();
+  const { order, setOrder } = useOrderStore();
+  const { firstName, lastName, address, city, state, zip, country } =
+    useAddressFormStore();
+  const { cardName, cardNumber, expiryDate, cvv } = usePaymentFormStore();
+
+  const handlePlaceOrder = () => {
+    const orderData = {
+      cart: [...cart],
+      shippingAddress: {
+        firstName,
+        lastName,
+        address,
+        city,
+        state,
+        zip,
+        country,
+      },
+      paymentDetails: {
+        cardName,
+        cardNumber,
+        expiryDate,
+        cvv,
+      },
+    };
+
+    setOrder(orderData);
+    clearCart();
+    setOrderPlaced(true);
+  };
+
+  console.log(order);
 
   const handleNext = () => {
-    setActiveStep((prevStep) => prevStep + 1);
+    if (activeStep === steps.length - 1) {
+      handlePlaceOrder();
+    } else {
+      setActiveStep((prevStep) => prevStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -58,26 +102,8 @@ export default function Checkout() {
 
   return (
     <>
+      <ShopNavbar />
       <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap component="div">
-            <figure style={{ width: "50px", height: "50px" }}>
-              <Link to="/shop">
-                <img src="../pictures/MEOLA Sticker.png" alt="Logo" />
-              </Link>
-            </figure>
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper
           variant="outlined"
@@ -93,15 +119,13 @@ export default function Checkout() {
               </Step>
             ))}
           </Stepper>
-          {activeStep === steps.length ? (
+          {orderPlaced ? (
             <>
               <Typography variant="h5" gutterBottom>
                 Thank you for your order.
               </Typography>
               <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
+                Your order number is #2001539.
               </Typography>
             </>
           ) : (

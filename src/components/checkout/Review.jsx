@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -7,32 +7,13 @@ import Grid from "@mui/material/Grid";
 import {
   useCartProducts,
   useAddressFormStore,
-  usePaymentFormStore,
-  useOrderStore
+  usePaymentFormStore
 } from "../../state/ZustandState.jsx";
 
 export default function Review() {
   const { cart, cartTotalPrice } = useCartProducts();
-  const { order, setOrder } = useOrderStore()
-  
-  const {
-    firstName,
-    lastName,
-    address,
-    city,
-    state,
-    zip,
-    country,
-  } = useAddressFormStore();
-
-  const {
-    cardName,
-    cardNumber,
-    expiryDate,
-    cvv
-  } = usePaymentFormStore()
-
-
+  const { firstName, lastName, address, city, state, zip, country } = useAddressFormStore();
+  const { cardName, cardNumber, expiryDate, cvv } = usePaymentFormStore();
 
   return (
     <React.Fragment>
@@ -75,28 +56,32 @@ export default function Review() {
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping Address
           </Typography>
-          <Typography gutterBottom>{firstName} {lastName}</Typography>
-          <Typography gutterBottom>{address}, {city}, {state}, {zip}, {country} </Typography>
+          <Typography gutterBottom>
+            {firstName} {lastName}
+          </Typography>
+          <Typography gutterBottom>
+            {address}, {city}, {state}, {zip}, {country}{" "}
+          </Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Payment details
           </Typography>
           <Grid container>
-              <React.Fragment>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>Card Holder:</Typography>
-                  <Typography gutterBottom>Card Number:</Typography>
-                  <Typography gutterBottom>Expiry Date:</Typography>
-                  <Typography gutterBottom>CVV:</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{cardName}</Typography>
-                  <Typography gutterBottom>{cardNumber}</Typography>
-                  <Typography gutterBottom>{expiryDate}</Typography>
-                  <Typography gutterBottom>{cvv}</Typography>
-                </Grid>
-              </React.Fragment>
+            <React.Fragment>
+              <Grid item xs={6}>
+                <Typography gutterBottom>Card Holder:</Typography>
+                <Typography gutterBottom>Card Number:</Typography>
+                <Typography gutterBottom>Expiry Date:</Typography>
+                <Typography gutterBottom>CVV:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography gutterBottom>{cardName}</Typography>
+                <Typography gutterBottom>{cardNumber}</Typography>
+                <Typography gutterBottom>{expiryDate}</Typography>
+                <Typography gutterBottom>{cvv}</Typography>
+              </Grid>
+            </React.Fragment>
           </Grid>
         </Grid>
       </Grid>
