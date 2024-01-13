@@ -7,7 +7,6 @@ const CardDisplay = ({ product }) => {
 
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
-    console.log("previously selectedSize state:", selectedSize);
     console.log("Selected Size:", size);
   };
 

@@ -140,14 +140,12 @@ export const usePaymentFormStore = create(
 )
 
 export const useOrderStore = create(
-  persist(
     (set) => ({
       order: [],
       setOrder: (data) => set({ order: data })
     }),
 
     { name: "order"}
-  )
 )
 
 export const useProductStore = create(
