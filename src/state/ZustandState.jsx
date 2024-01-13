@@ -101,6 +101,55 @@ export const useCartProducts = create(
   )
 );
 
+export const useAddressFormStore = create(
+  (set) => ({
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "",
+    setFirstName: (firstName) => set({ firstName }),
+    setLastName: (lastName) => set({ lastName }),
+    setAddress: (address) => set({ address }),
+    setCity: (city) => set({ city }),
+    setState: (state) => set({ state }),
+    setZip: (zip) => set({ zip }),
+    setCountry: (country) => set({ country }),
+  }),
+  {
+    name: "address",
+  }
+);
+
+export const usePaymentFormStore = create(
+  (set) => ({
+    cardName: "",
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
+    setCardName: (cardName) => set({ cardName }),
+    setCardNumber: (cardNumber) => set({ cardNumber }),
+    setExpiryDate: (expiryDate) => set({ expiryDate }),
+    setCvv: (cvv) => set({ cvv }),
+  }),
+  {
+    name: "payment",
+  }
+)
+
+export const useOrderStore = create(
+  persist(
+    (set) => ({
+      order: [],
+      setOrder: (data) => set({ order: data })
+    }),
+
+    { name: "order"}
+  )
+)
+
 export const useProductStore = create(
   persist(
     (set) => ({
@@ -111,3 +160,4 @@ export const useProductStore = create(
     { name: "products" }
   )
 );
+

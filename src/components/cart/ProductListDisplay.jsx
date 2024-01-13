@@ -4,6 +4,8 @@ import { useCartProducts } from "../../state/ZustandState.jsx";
 const ProductListDisplay = ({ product }) => {
   const { removeProduct, changeQuantity } = useCartProducts();
 
+  console.log(product);
+
   return (
     <div className="list has-visible-pointer-controls">
       <div className="list-item">
@@ -22,7 +24,12 @@ const ProductListDisplay = ({ product }) => {
 
         <div className="list-item-controls">
           <div className="is-flex is-align-items-center">
-            <span>{product.price}</span>
+            <span>
+              $
+              {(+(product.price.slice(1)) * product.quantity).toFixed(
+                2
+              )}
+            </span>
 
             <div className="control ml-3">
               <div className="select">
