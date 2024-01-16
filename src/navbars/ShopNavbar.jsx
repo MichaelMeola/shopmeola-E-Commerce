@@ -1,8 +1,21 @@
 import React from "react";
 import "bulma/css/bulma.css";
+import { Badge } from "@mui/material/";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCartProducts } from "../state/ZustandState.jsx";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
 
 const ShopNavbar = () => {
   const { cart, cartQuantity } = useCartProducts();
@@ -15,22 +28,23 @@ const ShopNavbar = () => {
     >
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
-          <img src="../../pictures/MEOLA Sticker.png" />
+          <img src="../../pictures/MEOLA Sticker.png" alt="Logo" />
         </a>
       </div>
-      <Link className="navbar-item has-dropdow is-hoverable" to="/shop">
-        <a className="navbar-link">Shop</a>
-        <div className="navbar-dropdown">
-          <a className="navbar-item">Clothing</a>
-          <a className="navbar-item">Accessories</a>
-          <a className="navbar-item">Vinyls</a>
-        </div>
+      <Link className="navbar-item" to="/shop">
+        Shop
       </Link>
       <Link className="navbar-item" to="/signup">
         Sign Up
       </Link>
       <Link className="navbar-item" to="/cart">
-        Cart - {cartQuantity}
+        <a>
+          <IconButton aria-label="cart">
+            <StyledBadge badgeContent={cartQuantity} color="secondary">
+              <ShoppingCartIcon />
+            </StyledBadge>
+          </IconButton>
+        </a>
       </Link>
     </nav>
   );

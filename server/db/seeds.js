@@ -1,4 +1,4 @@
-import { User, Product, Order } from "./models.js";
+import { User, Product } from "./models.js";
 
 const user1 = await User.create({
     email: 'meola@shopmeola.com',

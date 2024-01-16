@@ -1,5 +1,6 @@
 import React from 'react'
 import HomeNavbar from '../navbars/HomeNavbar'
+import Footer from '../Footer/Footer.jsx'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
@@ -61,6 +62,7 @@ const SignUp = () => {
         </div>
       </div>
       </form>
+      <Footer />
   </>
   )
 }

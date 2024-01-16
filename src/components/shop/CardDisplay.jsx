@@ -2,12 +2,26 @@ import React, { useState } from "react";
 import { useCartProducts } from "../../state/ZustandState.jsx";
 
 const CardDisplay = ({ product }) => {
-  const { cart, addProduct } = useCartProducts();
+  const { addProduct } = useCartProducts();
   const [selectedSize, setSelectedSize] = useState(null);
 
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
     console.log("Selected Size:", size);
+  };
+
+  const isSizeSelected = selectedSize !== null;
+
+  const handleAddToCart = () => {
+    if (
+      isSizeSelected ||
+      product.s === null ||
+      product.m === null ||
+      product.l === null ||
+      product.xl === null
+    ) {
+      addProduct({ ...product, size: selectedSize });
+    }
   };
 
   return (
@@ -37,32 +51,46 @@ const CardDisplay = ({ product }) => {
             {product.s !== null && (
               <>
                 <h>Select Your Size</h>
-                <button className='button is-black is-outlined'
+                <button
+                  className={`button is-black is-outlined ${
+                    selectedSize === "S" ? "is-black" : ""
+                  }`}
                   onClick={() => handleSizeSelection("S")}
+                  disabled={product.s === 0}
                 >
                   S
                 </button>
               </>
             )}
             {product.m !== null && (
-              <button className='button is-black is-outlined'
+              <button
+                className={`button is-black is-outlined ${
+                  selectedSize === "M" ? "is-black" : ""
+                }`}
                 onClick={() => handleSizeSelection("M")}
+                disabled={product.m === 0}
               >
                 M
               </button>
             )}
             {product.l !== null && (
               <button
-                className='button is-black is-outlined'
+                className={`button is-black is-outlined ${
+                  selectedSize === "L" ? "is-black" : ""
+                }`}
                 onClick={() => handleSizeSelection("L")}
+                disabled={product.l === 0}
               >
                 L
               </button>
             )}
             {product.xl !== null && (
               <button
-                className='button is-black is-outlined'
+                className={`button is-black is-outlined ${
+                  selectedSize === "XL" ? "is-black" : ""
+                }`}
                 onClick={() => handleSizeSelection("XL")}
+                disabled={product.xl === 0}
               >
                 XL
               </button>
@@ -71,10 +99,15 @@ const CardDisplay = ({ product }) => {
 
           <div className="card-footer">
             <button
-              onClick={() => {
-                addProduct({ ...product, size: selectedSize });
-              }}
+              onClick={handleAddToCart}
               className="card-footer-item button is-success"
+              disabled={
+                !isSizeSelected &&
+                product.s !== null &&
+                product.m !== null &&
+                product.l !== null &&
+                product.xl !== null
+              }
             >
               Add To Cart
             </button>

@@ -104,7 +104,7 @@ Order.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    customerName: {
         type: DataTypes.STRING,
     },
     address: {
@@ -131,4 +131,4 @@ if (process.argv[1] === url.fileURLToPath(import.meta.url)) {
   console.log("Finished syncing database!");
 }
 
-export { User, Product, Order };
+export { User, Product };

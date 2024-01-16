@@ -1,5 +1,6 @@
 import React from "react";
 import ShopNavbar from "../navbars/ShopNavbar.jsx";
+import Footer from "../Footer/Footer.jsx";
 import ProductListDisplay from "../components/cart/ProductListDisplay.jsx";
 import OrderSummary from "../components/cart/OrderSummary.jsx";
 import { Link } from "react-router-dom";
@@ -37,6 +38,7 @@ const Cart = () => {
           </>
         )}
       </div>
+      <Footer />
     </>
   );
 };
