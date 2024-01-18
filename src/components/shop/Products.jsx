@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useProductStore } from "../../state/ZustandState.jsx";
-import axios from 'axios';
-import CardDisplay from './CardDisplay';
+import axios from "axios";
+import CardDisplay from "./CardDisplay";
+import './Products.css'
 
 const Products = () => {
   const { products, setProducts } = useProductStore();
 
   useEffect(() => {
     axios
-      .get('/products')
+      .get("/products")
       .then((res) => {
         setProducts(res.data);
       })
@@ -21,8 +22,13 @@ const Products = () => {
     <CardDisplay product={product} key={product.productId} />
   ));
 
-
-  return <div>{cards}</div>;
+  return (
+    <>
+      <div className="cards">
+        {cards}
+      </div>;
+    </>
+  );
 };
 
 export default Products;

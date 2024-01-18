@@ -91,39 +91,6 @@ Product.init(
   }
 );
 
-class Order extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
-
-Order.init(
-  {
-    orderId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    customerName: {
-        type: DataTypes.STRING,
-    },
-    address: {
-      type: DataTypes.STRING,
-    },
-    cart: {
-      type: DataTypes.STRING,
-    },
-    total: {
-      type: DataTypes.STRING,
-    },
-    orderedAt: {
-      type: DataTypes.DATETIME,
-    },
-  },
-  {
-    sequelize: db,
-  }
-);
 
 if (process.argv[1] === url.fileURLToPath(import.meta.url)) {
   console.log("Syncing database...");

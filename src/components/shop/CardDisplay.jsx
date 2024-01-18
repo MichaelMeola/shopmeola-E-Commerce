@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useCartProducts } from "../../state/ZustandState.jsx";
+import "./Products.css";
 
 const CardDisplay = ({ product }) => {
   const { addProduct } = useCartProducts();
@@ -26,7 +27,7 @@ const CardDisplay = ({ product }) => {
 
   return (
     <>
-      <div className="card">
+      <div className="card card-product">
         <div className="card-image">
           <figure className="image is-128x128">
             <img src={`${product.image}`} alt="Product Image" />
@@ -37,7 +38,7 @@ const CardDisplay = ({ product }) => {
           <div className="media">
             <div className="media-content">
               <p className="title is-4">{product.name}</p>
-              <p className="subtitle is-6 has-text-weight-semibold">
+              <p className="subtitle is-6 has-text-weight-semibold price">
                 {product.price}
               </p>
             </div>
@@ -50,7 +51,9 @@ const CardDisplay = ({ product }) => {
           <div className="content">
             {product.s !== null && (
               <>
-                <h>Select Your Size</h>
+                <div>
+                  <h>Select Your Size</h>
+                </div>
                 <button
                   className={`button is-black is-outlined ${
                     selectedSize === "S" ? "is-black" : ""
@@ -96,23 +99,22 @@ const CardDisplay = ({ product }) => {
               </button>
             )}
           </div>
-
-          <div className="card-footer">
-            <button
-              onClick={handleAddToCart}
-              className="card-footer-item button is-success"
-              disabled={
-                !isSizeSelected &&
-                product.s !== null &&
-                product.m !== null &&
-                product.l !== null &&
-                product.xl !== null
-              }
-            >
-              Add To Cart
-            </button>
-          </div>
         </div>
+        <footer className="card-footer">
+          <button
+            onClick={handleAddToCart}
+            className="card-footer-item button is-success"
+            disabled={
+              !isSizeSelected &&
+              product.s !== null &&
+              product.m !== null &&
+              product.l !== null &&
+              product.xl !== null
+            }
+          >
+            Add To Cart
+          </button>
+        </footer>
       </div>
     </>
   );

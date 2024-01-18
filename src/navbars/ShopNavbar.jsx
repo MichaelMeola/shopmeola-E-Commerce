@@ -27,9 +27,9 @@ const ShopNavbar = () => {
       aria-label="main navigation"
     >
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
+        <Link className="navbar-item" to="/">
           <img src="../../pictures/MEOLA Sticker.png" alt="Logo" />
-        </a>
+        </Link>
       </div>
       <Link className="navbar-item" to="/shop">
         Shop
