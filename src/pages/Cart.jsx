@@ -5,6 +5,7 @@ import ProductListDisplay from "../components/cart/ProductListDisplay.jsx";
 import OrderSummary from "../components/cart/OrderSummary.jsx";
 import { Link } from "react-router-dom";
 import { useCartProducts } from "../state/ZustandState.jsx";
+import './Cart.css'
 
 const Cart = () => {
   const { cart, removeProduct, clearCart } = useCartProducts();
@@ -27,12 +28,12 @@ const Cart = () => {
           </>
         ) : (
           <>
-            <div>
+            <div className="cart-content">
               <h1 className="title is-4 mb-2">Your Shopping Cart</h1>
               {productList}
               <button onClick={() => clearCart()}>Clear Cart</button>
             </div>
-            <div>
+            <div className="cart-summary">
               <OrderSummary />
             </div>
           </>

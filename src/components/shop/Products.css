@@ -26,6 +26,14 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+.button-group {
+  display: flex;
+}
+
+.button-group button {
+  margin-right: 10px;
+  width: 40px;
+}
 
 .card-image {
   margin-bottom: 20px;

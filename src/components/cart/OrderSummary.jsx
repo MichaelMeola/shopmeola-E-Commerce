@@ -20,7 +20,7 @@ const OrderSummary = () => {
         </div>
       </div>
       <Link to="/checkout">
-        <button>Checkout</button>
+        <button className="button is-success">Checkout</button>
       </Link>
     </div>
   );

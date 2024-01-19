@@ -50,53 +50,53 @@ const CardDisplay = ({ product }) => {
 
           <div className="content">
             {product.s !== null && (
-              <>
-                <div>
-                  <h>Select Your Size</h>
+              <div className="size-selection">
+                <h5>Select Your Size</h5>
+                <div className="button-group">
+                  <button
+                    className={`button is-black is-outlined ${
+                      selectedSize === "S" ? "is-black" : ""
+                    }`}
+                    onClick={() => handleSizeSelection("S")}
+                    disabled={product.s === 0}
+                  >
+                    S
+                  </button>
+                  {product.m !== null && (
+                    <button
+                      className={`button is-black is-outlined ${
+                        selectedSize === "M" ? "is-black" : ""
+                      }`}
+                      onClick={() => handleSizeSelection("M")}
+                      disabled={product.m === 0}
+                    >
+                      M
+                    </button>
+                  )}
+                  {product.l !== null && (
+                    <button
+                      className={`button is-black is-outlined ${
+                        selectedSize === "L" ? "is-black" : ""
+                      }`}
+                      onClick={() => handleSizeSelection("L")}
+                      disabled={product.l === 0}
+                    >
+                      L
+                    </button>
+                  )}
+                  {product.xl !== null && (
+                    <button
+                      className={`button is-black is-outlined ${
+                        selectedSize === "XL" ? "is-black" : ""
+                      }`}
+                      onClick={() => handleSizeSelection("XL")}
+                      disabled={product.xl === 0}
+                    >
+                      XL
+                    </button>
+                  )}
                 </div>
-                <button
-                  className={`button is-black is-outlined ${
-                    selectedSize === "S" ? "is-black" : ""
-                  }`}
-                  onClick={() => handleSizeSelection("S")}
-                  disabled={product.s === 0}
-                >
-                  S
-                </button>
-              </>
-            )}
-            {product.m !== null && (
-              <button
-                className={`button is-black is-outlined ${
-                  selectedSize === "M" ? "is-black" : ""
-                }`}
-                onClick={() => handleSizeSelection("M")}
-                disabled={product.m === 0}
-              >
-                M
-              </button>
-            )}
-            {product.l !== null && (
-              <button
-                className={`button is-black is-outlined ${
-                  selectedSize === "L" ? "is-black" : ""
-                }`}
-                onClick={() => handleSizeSelection("L")}
-                disabled={product.l === 0}
-              >
-                L
-              </button>
-            )}
-            {product.xl !== null && (
-              <button
-                className={`button is-black is-outlined ${
-                  selectedSize === "XL" ? "is-black" : ""
-                }`}
-                onClick={() => handleSizeSelection("XL")}
-                disabled={product.xl === 0}
-              >
-                XL
-              </button>
+              </div>
             )}
           </div>
         </div>

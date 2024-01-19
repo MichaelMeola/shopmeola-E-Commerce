@@ -17,6 +17,7 @@ import AddressForm from "../components/checkout/AddressForm.jsx";
 import PaymentForm from "../components/checkout/PaymentForm.jsx";
 import Review from "../components/checkout/Review.jsx";
 import ShopNavbar from "../navbars/ShopNavbar.jsx";
+import Footer from "../footer/Footer.jsx"
 import {
   useCartProducts,
   useAddressFormStore,
@@ -151,6 +152,7 @@ export default function Checkout() {
         </Paper>
         <Copyright />
       </Container>
+      <Footer />
     </>
   );
 }

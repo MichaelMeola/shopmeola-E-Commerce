@@ -1,0 +1,16 @@
+#cart {
+    width: auto;
+    margin-top: 75px;
+  }
+  
+  .cart-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 600px;
+    max-height: auto;
+  }
+  
+  .cart-summary {
+    display: gi
+  }

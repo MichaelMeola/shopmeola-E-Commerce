@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const ProductsTable = ({
   initialProductData,
@@ -22,16 +25,21 @@ const ProductsTable = ({
 
   const changeEditMode = () => setIsEditing(true);
   const changeNormalMode = () => {
+    const formData = new FormData();
+    formData.append("image", image); // Append the image file directly
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("s", s);
+    formData.append("m", m);
+    formData.append("l", l);
+    formData.append("xl", xl);
+
     axios
-      .put(`/product/${initialProductData.productId}`, {
-        name,
-        description,
-        price,
-        s,
-        m,
-        l,
-        xl,
-        image,
+      .put(`/product/${initialProductData.productId}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Set the content type to multipart/form-data
+        },
       })
       .then((res) => {
         console.log(res.data);
@@ -42,6 +50,42 @@ const ProductsTable = ({
         console.log(err);
       });
   };
+
+  const saveProductData = (imageString) => {
+    axios
+      .put(`/product/${initialProductData.productId}`, {
+        name,
+        description,
+        price,
+        s,
+        m,
+        l,
+        xl,
+        image: imageString, // Store the image as a string
+      })
+      .then((res) => {
+        console.log(res.data);
+        setProductData(res.data);
+        setIsEditing(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const VisuallyHiddenInput = styled("input")({
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(50%)",
+    height: 1,
+    overflow: "hidden",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+    width: 1,
+  });
+
+  console.log(image);
 
   return isEditing ? (
     <tr key={initialProductData.productId}>
@@ -118,14 +162,14 @@ const ProductsTable = ({
         />
       </td>
       <td>
-        <div className="file">
-          <label className="file-label">
-            <input className="file-input" type="file" name="resume" />
-            <span className="file-cta">
-              <span className="file-label">Choose a file…</span>
-            </span>
-          </label>
-        </div>
+        <Button
+          component="label"
+          variant="contained"
+          startIcon={<CloudUploadIcon />}
+        >
+          Upload file
+          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        </Button>
       </td>
     </tr>
   ) : (

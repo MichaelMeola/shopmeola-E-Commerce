@@ -1,5 +1,6 @@
 import React from "react";
 import { useCartProducts } from "../../state/ZustandState.jsx";
+import "./ProductListDisplay.css";
 
 const ProductListDisplay = ({ product }) => {
   const { removeProduct, changeQuantity } = useCartProducts();
@@ -24,14 +25,12 @@ const ProductListDisplay = ({ product }) => {
 
         <div className="list-item-controls">
           <div className="is-flex is-align-items-center">
-            <span>
+            <span className="item-price">
               $
-              {(+(product.price.slice(1)) * product.quantity).toFixed(
-                2
-              )}
+              {(+(product.price.slice(1)) * product.quantity).toFixed(2)}
             </span>
 
-            <div className="control ml-3">
+            <div className="control ml-3 quantity-select">
               <div className="select">
                 <select
                   value={product.quantity}
@@ -55,7 +54,7 @@ const ProductListDisplay = ({ product }) => {
           </div>
 
           <button
-            className="button is-danger"
+            className="button is-danger remove-button"
             onClick={() => {
               removeProduct(product.productId, product.size);
             }}
