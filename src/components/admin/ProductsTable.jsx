@@ -25,33 +25,6 @@ const ProductsTable = ({
 
   const changeEditMode = () => setIsEditing(true);
   const changeNormalMode = () => {
-    const formData = new FormData();
-    formData.append("image", image); // Append the image file directly
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("s", s);
-    formData.append("m", m);
-    formData.append("l", l);
-    formData.append("xl", xl);
-
-    axios
-      .put(`/product/${initialProductData.productId}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data", // Set the content type to multipart/form-data
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setProductData(res.data);
-        setIsEditing(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const saveProductData = (imageString) => {
     axios
       .put(`/product/${initialProductData.productId}`, {
         name,
@@ -61,15 +34,12 @@ const ProductsTable = ({
         m,
         l,
         xl,
-        image: imageString, // Store the image as a string
+        image,
       })
       .then((res) => {
         console.log(res.data);
         setProductData(res.data);
         setIsEditing(false);
-      })
-      .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -84,8 +54,6 @@ const ProductsTable = ({
     whiteSpace: "nowrap",
     width: 1,
   });
-
-  console.log(image);
 
   return isEditing ? (
     <tr key={initialProductData.productId}>
@@ -168,7 +136,7 @@ const ProductsTable = ({
           startIcon={<CloudUploadIcon />}
         >
           Upload file
-          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+          <VisuallyHiddenInput type="file" />
         </Button>
       </td>
     </tr>

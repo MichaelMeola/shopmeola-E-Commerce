@@ -39,7 +39,7 @@
   }
   
   .quantity-select {
-    width: 60px;
+    width: auto;
   }
   
   .remove-button {
